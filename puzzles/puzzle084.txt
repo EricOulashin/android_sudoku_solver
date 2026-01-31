@@ -1,0 +1,10 @@
+# Puzzle 84 in New York Post "Su Doku 1" (fiendish)
+ 8     2 
+  1   6  
+2   5   3
+  65 12  
+7  6 4  9
+  47 93  
+6   1   5
+  7   9  
+ 4     3 

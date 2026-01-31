@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryLight">#ff5c8d</color>
+    <color name="colorAccent">#1e88e5</color>
+    <color name="colorAccentDark">#005cb2</color>
+    <color name="colorAccentLight">#6ab7ff</color>
+    <color name="lightCell">#FFFFFF</color>
+    <color name="dimCell">#3281A9</color>
+
+
+</resources>
