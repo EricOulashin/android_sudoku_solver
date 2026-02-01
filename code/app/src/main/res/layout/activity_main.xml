@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/tableLayout_puzzle">
+            android:id="@+id/tableLayout_puzzle"
+            android:background="@android:color/black">
 
             <TableRow
                 android:layout_width="match_parent"
