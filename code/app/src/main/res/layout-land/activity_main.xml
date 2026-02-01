@@ -8,322 +8,310 @@
 
     <LinearLayout
         android:id="@+id/grid_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttons_layout"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintDimensionRatio="1:1">
 
         <TableLayout
             android:id="@+id/tableLayout_puzzle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@android:color/black">
+            android:background="@android:color/black"
+            android:stretchColumns="*">
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row1_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row1_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
-                    android:maxLength="1"
-                    android:scrollbars="none"
-                    android:textSize="18sp" />
+                    android:maxLength="1" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row2_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row2_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row3_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row3_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
@@ -331,95 +319,96 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row4_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row4_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
@@ -427,95 +416,96 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row5_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row5_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
@@ -523,95 +513,96 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row6_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row6_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
@@ -619,182 +610,184 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row7_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
                 <EditText
                     android:id="@+id/editText_row7_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row8_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row8_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
@@ -802,95 +795,96 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/editText_row9_text1"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text2"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text3"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text4"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text5"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text6"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/lightCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text7"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text8"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
                     android:id="@+id/editText_row9_text9"
                     style="@style/TextView.SudokuNumericInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/dimCell"
-                    android:ems="1"
                     android:inputType="number"
                     android:maxLength="1" />
 
