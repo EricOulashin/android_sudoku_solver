@@ -16,22 +16,14 @@ import java.io.File
 import java.lang.IndexOutOfBoundsException
 import kotlin.concurrent.thread
 
-// TODO: Add Random Puzzle button
-/*
-mSolver.genRandomPuzzle()
-for (row in 1..9) {
-    for (col in 1..9) {
-        setGridInputVal(row, col, mSolver.getVal(row-1, col-1))
-    }
-}
- */
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // TODO: Improve random puzzle generation
+        //mBtnRandomPuzzle = findViewById<Button>(R.id.btn_random_puzzle)
         mBtnLoad = findViewById<Button>(R.id.btn_load_puzzle)
         mBtnSolve = findViewById<Button>(R.id.btn_solve)
         mBtnClear = findViewById<Button>(R.id.btn_clear)
@@ -39,6 +31,17 @@ class MainActivity : AppCompatActivity() {
         mBtnNextSolution = findViewById<Button>(R.id.btn_next_solution)
         mSolutionNumInput = findViewById<EditText>(resources.getIdentifier("editText_solution_num", "id", getPackageName()))
         mStatusText = findViewById(R.id.textView_status)
+
+        /*
+        mBtnRandomPuzzle.setOnClickListener {
+            mSolver.genRandomPuzzle()
+            for (row in 1..9) {
+                for (col in 1..9) {
+                    setGridInputVal(row, col, mSolver.getVal(row-1, col-1))
+                }
+            }
+        }
+        */
 
         mBtnLoad.setOnClickListener {
             val intent = Intent()
@@ -211,6 +214,7 @@ class MainActivity : AppCompatActivity() {
         mStatusText.setText(pStatus)
     }
 
+    //private lateinit var mBtnRandomPuzzle: Button
     private lateinit var mBtnLoad: Button
     private lateinit var mBtnSolve: Button
     private lateinit var mBtnClear: Button

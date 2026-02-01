@@ -901,6 +901,16 @@
             android:orientation="horizontal"
             android:paddingTop="5dp">
 
+            <!-- Random puzzle button -->
+            <!--
+            <Button
+                android:id="@+id/btn_random_puzzle"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="Random" />
+            -->
+
             <Button
                 android:id="@+id/btn_load_puzzle"
                 android:layout_width="wrap_content"
