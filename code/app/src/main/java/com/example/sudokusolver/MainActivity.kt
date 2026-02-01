@@ -16,6 +16,16 @@ import java.io.File
 import java.lang.IndexOutOfBoundsException
 import kotlin.concurrent.thread
 
+// TODO: Add Random Puzzle button
+/*
+mSolver.genRandomPuzzle()
+for (row in 1..9) {
+    for (col in 1..9) {
+        setGridInputVal(row, col, mSolver.getVal(row-1, col-1))
+    }
+}
+ */
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,75 +40,11 @@ class MainActivity : AppCompatActivity() {
         mSolutionNumInput = findViewById<EditText>(resources.getIdentifier("editText_solution_num", "id", getPackageName()))
         mStatusText = findViewById(R.id.textView_status)
 
-        // Temporary - Setting a puzzle
-        /*
-        setGridInputVal(1, 2, 6)
-        setGridInputVal(1, 3, 1)
-        setGridInputVal(1, 5, 3)
-        setGridInputVal(1, 8, 2)
-        setGridInputVal(2, 2, 5)
-        setGridInputVal(2, 6, 8)
-        setGridInputVal(2, 7, 1)
-        setGridInputVal(2, 9, 7)
-        setGridInputVal(3, 6, 7)
-        setGridInputVal(3, 8, 3)
-        setGridInputVal(3, 9, 4)
-        setGridInputVal(4, 3, 9)
-        setGridInputVal(4, 6, 6)
-        setGridInputVal(4, 8, 7)
-        setGridInputVal(4, 9, 8)
-        setGridInputVal(5, 3, 3)
-        setGridInputVal(5, 4, 2)
-        setGridInputVal(5, 6, 9)
-        setGridInputVal(5, 7, 5)
-        setGridInputVal(6, 1, 5)
-        setGridInputVal(6, 2, 7)
-        setGridInputVal(6, 4, 3)
-        setGridInputVal(6, 7, 9)
-        setGridInputVal(7, 1, 1)
-        setGridInputVal(7, 2, 9)
-        setGridInputVal(7, 4, 7)
-        setGridInputVal(8, 1, 8)
-        setGridInputVal(8, 3, 2)
-        setGridInputVal(8, 4, 4)
-        setGridInputVal(8, 8, 6)
-        setGridInputVal(9, 2, 4)
-        setGridInputVal(9, 5, 1)
-        setGridInputVal(9, 7, 2)
-        setGridInputVal(9, 8, 5)
-        */
-        // Multiple solutions puzzle (takes perhaps too long to solve)
-        /*
-        setGridInputVal(1, 6, 1)
-        setGridInputVal(2, 7, 4)
-        setGridInputVal(2, 8, 2)
-        setGridInputVal(3, 3, 1)
-        setGridInputVal(4, 1, 5)
-        setGridInputVal(5, 4, 7)
-        setGridInputVal(5, 7, 9)
-        setGridInputVal(6, 4, 5)
-        setGridInputVal(6, 5, 8)
-        setGridInputVal(6, 6, 4)
-        setGridInputVal(7, 3, 8)
-        setGridInputVal(7, 6, 9)
-        setGridInputVal(7, 9, 5)
-        setGridInputVal(8, 7, 8)
-        setGridInputVal(8, 9, 9)
-        setGridInputVal(9, 5, 5)
-        */
-        // End Temporary
-
         mBtnLoad.setOnClickListener {
-            mSolver.genRandomPuzzle()
-            for (row in 1..9) {
-                for (col in 1..9) {
-                    setGridInputVal(row, col, mSolver.getVal(row-1, col-1))
-                }
-            }
-            //val intent = Intent()
-            //    .setType("text/*")
-            //    .setAction(Intent.ACTION_GET_CONTENT)
-            //startActivityForResult(Intent.createChooser(intent, "Select a file"), PUZZLE_FILE_CHOSEN_VAL)
+            val intent = Intent()
+                .setType("text/*")
+                .setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select a file"), PUZZLE_FILE_CHOSEN_VAL)
         }
 
         mBtnSolve.setOnClickListener {
