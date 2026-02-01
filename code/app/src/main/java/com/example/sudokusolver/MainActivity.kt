@@ -11,22 +11,56 @@ import android.os.Message
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import android.widget.*
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import java.io.File
 import java.lang.IndexOutOfBoundsException
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var cameraExecutor: ExecutorService
+    private lateinit var previewView: PreviewView
+    private lateinit var mainLayout: LinearLayout
+    private lateinit var puzzleGrid: TableLayout
+    private lateinit var cameraMessage: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        previewView = findViewById(R.id.preview_view)
+        mainLayout = findViewById(R.id.linearLayout_main)
+        puzzleGrid = findViewById(R.id.tableLayout_puzzle)
+        cameraMessage = findViewById(R.id.camera_message)
+
+        // Request camera permissions
+        if (allPermissionsGranted()) {
+            startCamera()
+        } else {
+            ActivityCompat.requestPermissions(
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        }
 
         // TODO: Improve random puzzle generation
         //mBtnRandomPuzzle = findViewById<Button>(R.id.btn_random_puzzle)
         mBtnLoad = findViewById<Button>(R.id.btn_load_puzzle)
         mBtnSolve = findViewById<Button>(R.id.btn_solve)
         mBtnClear = findViewById<Button>(R.id.btn_clear)
+        mBtnScan = findViewById<Button>(R.id.btn_photo_scan)
         mBtnPrevSolution = findViewById<Button>(R.id.btn_prev_solution)
         mBtnNextSolution = findViewById<Button>(R.id.btn_next_solution)
         mSolutionNumInput = findViewById<EditText>(resources.getIdentifier("editText_solution_num", "id", getPackageName()))
@@ -87,6 +121,18 @@ class MainActivity : AppCompatActivity() {
             toggleUIInputsEnabled(true)
         }
 
+        mBtnScan.setOnClickListener {
+            if (previewView.visibility == View.GONE) {
+                mainLayout.visibility = View.GONE
+                previewView.visibility = View.VISIBLE
+                cameraMessage.visibility = View.VISIBLE
+            } else {
+                mainLayout.visibility = View.VISIBLE
+                previewView.visibility = View.GONE
+                cameraMessage.visibility = View.GONE
+            }
+        }
+
         mBtnPrevSolution.setOnClickListener {
             // Note: The number in the solution # input is 1-based, and the solution index is 0-based
             var solutionIdx: Int = mSolutionNumInput.text.toString().toInt() - 2
@@ -133,6 +179,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -201,12 +249,12 @@ class MainActivity : AppCompatActivity() {
             return false
         if ((pCol < 1) || (pCol > 9))
             return false
-        if ((pVal < 1) || (pVal > 9))
+        if ((pVal < 0) || (pVal > 9)) // Allow 0 to clear the cell
             return false
 
         val inputName: String = "editText_row" + pRow.toString() + "_text" + pCol.toString()
         val textInput: EditText = findViewById<EditText>(resources.getIdentifier(inputName, "id", getPackageName()))
-        textInput.setText(pVal.toString())
+        textInput.setText(if (pVal == 0) "" else pVal.toString())
         return true
     }
 
@@ -214,10 +262,75 @@ class MainActivity : AppCompatActivity() {
         mStatusText.setText(pStatus)
     }
 
+    private fun startCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+
+        cameraProviderFuture.addListener(Runnable {
+            // Used to bind the lifecycle of cameras to the lifecycle owner
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+
+            // Preview
+            val preview = Preview.Builder()
+                .build()
+                .also {
+                    it.setSurfaceProvider(previewView.surfaceProvider)
+                }
+
+            val imageAnalyzer = ImageAnalysis.Builder()
+                .build()
+                .also {
+                    it.setAnalyzer(cameraExecutor, SudokuImageAnalyzer(this))
+                }
+
+            // Select back camera as a default
+            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
+            try {
+                // Unbind use cases before rebinding
+                cameraProvider.unbindAll()
+
+                // Bind use cases to camera
+                cameraProvider.bindToLifecycle(
+                    this, cameraSelector, preview, imageAnalyzer)
+
+            } catch(exc: Exception) {
+                Log.e(TAG, "Use case binding failed", exc)
+            }
+
+        }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(
+            baseContext, it) == android.content.pm.PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String>, grantResults:
+        IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (allPermissionsGranted()) {
+                startCamera()
+            } else {
+                Toast.makeText(this,
+                    "Permissions not granted by the user.",
+                    Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
+    }
+
     //private lateinit var mBtnRandomPuzzle: Button
     private lateinit var mBtnLoad: Button
     private lateinit var mBtnSolve: Button
     private lateinit var mBtnClear: Button
+    private lateinit var mBtnScan : Button
     private lateinit var mBtnPrevSolution: Button
     private lateinit var mBtnNextSolution: Button
     private lateinit var mSolutionNumInput: EditText
@@ -226,6 +339,9 @@ class MainActivity : AppCompatActivity() {
 
     private val PUZZLE_FILE_CHOSEN_VAL: Int = 111
     private val DONE_SOLVING_MSG_VAL: Int = 112
+    private val REQUEST_CODE_PERMISSIONS = 10
+    private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
+    private val TAG = "SudokuSolver"
 
     private val mHandler: Handler = object : Handler(Looper.getMainLooper()) {
         /*
@@ -286,6 +402,7 @@ class MainActivity : AppCompatActivity() {
         mBtnLoad.isEnabled = pEnabled
         mBtnSolve.isEnabled = pEnabled
         mBtnClear.isEnabled = pEnabled
+        mBtnScan.isEnabled = pEnabled
         mBtnPrevSolution.isEnabled = pEnabled
         mBtnNextSolution.isEnabled = pEnabled
         mSolutionNumInput.isEnabled = pEnabled
@@ -302,5 +419,69 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return retVal
+    }
+
+    private class SudokuImageAnalyzer(private val activity: MainActivity) : ImageAnalysis.Analyzer {
+
+        private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+
+        @androidx.camera.core.ExperimentalGetImage
+        override fun analyze(imageProxy: androidx.camera.core.ImageProxy) {
+            val mediaImage = imageProxy.image
+            if (mediaImage != null) {
+                val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+                recognizer.process(image)
+                    .addOnSuccessListener { visionText ->
+                        activity.runOnUiThread {
+                            val puzzleGrid = activity.puzzleGrid
+                            val gridWidth = puzzleGrid.width
+                            val gridHeight = puzzleGrid.height
+                            val cellWidth = gridWidth / 9
+                            val cellHeight = gridHeight / 9
+
+                            // Create a 9x9 grid to store the average digit per cell
+                            val cellDigits = Array(9) { Array(9) { mutableListOf<Int>() } }
+
+                            for (block in visionText.textBlocks) {
+                                for (line in block.lines) {
+                                    for (element in line.elements) {
+                                        if (element.text.length == 1 && element.text[0].isDigit()) {
+                                            val digit = element.text.toInt()
+                                            val boundingBox = element.boundingBox
+                                            if (boundingBox != null) {
+                                                val centerX = boundingBox.centerX()
+                                                val centerY = boundingBox.centerY()
+
+                                                val col = (centerX / cellWidth).toInt()
+                                                val row = (centerY / cellHeight).toInt()
+
+                                                if (row in 0..8 && col in 0..8) {
+                                                    cellDigits[row][col].add(digit)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Now, find the most likely digit for each cell
+                            for (row in 0..8) {
+                                for (col in 0..8) {
+                                    if (cellDigits[row][col].isNotEmpty()) {
+                                        val mostCommonDigit = cellDigits[row][col].groupingBy { it }.eachCount().maxByOrNull { it.value }?.key
+                                        if (mostCommonDigit != null) {
+                                            activity.setGridInputVal(row + 1, col + 1, mostCommonDigit)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        imageProxy.close()
+                    }
+                    .addOnFailureListener {
+                        imageProxy.close()
+                    }
+            }
+        }
     }
 }
