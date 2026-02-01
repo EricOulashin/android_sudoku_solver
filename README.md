@@ -25,7 +25,7 @@ Currently, it is set up for the following:
 <ul>
 <li><b>Compile SDK version</b>: 34
 <li><b>Minimum SDK version: </b>: 21
-<li><b>Target SDK version 34</b>: 
+<li><b>Target SDK version</b>: 34
 </ul>
 
 # Screenshots
