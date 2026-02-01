@@ -11,16 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="5dp">
 
         <TableLayout
+            android:id="@+id/tableLayout_puzzle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/tableLayout_puzzle"
             android:background="@android:color/black">
 
             <TableRow
@@ -895,7 +895,6 @@
             </TableRow>
         </TableLayout>
 
-        <!-- Load, Save, & Clear buttons, and solution number picker -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
