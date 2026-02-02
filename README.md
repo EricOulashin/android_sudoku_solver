@@ -41,8 +41,8 @@ Currently, it is set up for the following:
 The following are screenshots of the app, with a puzzle typed in and after the puzzle is solved:
 
 <p align="center">
-  <img src="screenshots/SudokuSolver_Android_NewPuzzle_Portrait.png" alt="New puzzle" style="width: 50%; height: auto;">
-  <img src="screenshots/SudokuSolver_Android_Solved_Portrait.png" alt="Puzzle solved" style="width: 50%; height: auto;">
-  <img src="screenshots/SudokuSolver_Android_NewPuzzle_Landscape.png" alt="New puzzle" style="width: 50%; height: auto;">
-  <img src="screenshots/SudokuSolver_Android_Solved_Landscape.png" alt="Puzzle solved" style="width: 50%; height: auto;">
+  <img src="screenshots/SudokuSolver_Android_NewPuzzle_Portrait.png" alt="New puzzle (portrait orientation)" style="height: 75%; width: auto;">
+  <img src="screenshots/SudokuSolver_Android_Solved_Portrait.png" alt="Puzzle solved (portrait orientation)" style="height: 75%; width: auto;">
+  <img src="screenshots/SudokuSolver_Android_NewPuzzle_Landscape.png" alt="New puzzle (landscape orientation)" style="height: 40%; width: auto;">
+  <img src="screenshots/SudokuSolver_Android_Solved_Landscape.png" alt="Puzzle solved (landscape orientation)" style="height: 40%; width: auto;">
 </p>
