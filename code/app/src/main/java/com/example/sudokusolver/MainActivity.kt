@@ -1,22 +1,20 @@
 package com.example.sudokusolver
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.text.Editable
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.widget.*
-import java.io.File
-import java.lang.IndexOutOfBoundsException
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: SudokuViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,16 +51,16 @@ class MainActivity : AppCompatActivity() {
         mBtnSolve.setOnClickListener {
             // Make sure the puzzle on the screen isn't all zeroes before we try to solve it
             if (!puzzleAllZeros()) {
-                mSolver.reset()
+                viewModel.solver.reset()
                 for (row in 1..9) {
                     for (col in 1..9)
-                        mSolver.setVal(row - 1, col - 1, getGridInputVal(row, col))
+                        viewModel.solver.setVal(row - 1, col - 1, getGridInputVal(row, col))
                 }
                 toggleUIInputsEnabled(false)
                 setStatusText("Solving...")
                 thread(start = true) {
                     // Returns a thread object if we'd need to do anything with it
-                    mSolver.solve()
+                    viewModel.solver.solve()
                     // Communicate with the UI thread when it's done solving
                     mHandler.obtainMessage(DONE_SOLVING_MSG_VAL).apply { sendToTarget() }
                 }
@@ -89,9 +87,9 @@ class MainActivity : AppCompatActivity() {
 
         mBtnPrevSolution.setOnClickListener {
             // Note: The number in the solution # input is 1-based, and the solution index is 0-based
-            var solutionIdx: Int = mSolutionNumInput.text.toString().toInt() - 2
+            var solutionNumStr: String = mSolutionNumInput.text.toString()
+            var solutionIdx: Int = solutionNumStr.toInt() - 1
             if (setSolutionOnBoard(solutionIdx)) {
-                mSolutionNumInput.setText((solutionIdx + 1).toString())
                 mBtnNextSolution.isEnabled = true
                 if (solutionIdx == 0)
                     mBtnPrevSolution.isEnabled = false
@@ -103,11 +101,11 @@ class MainActivity : AppCompatActivity() {
 
         mBtnNextSolution.setOnClickListener {
             // Note: The number in the solution # input is 1-based, and the solution index is 0-based
-            var solutionIdx: Int = mSolutionNumInput.text.toString().toInt()
+            var solutionNumStr: String = mSolutionNumInput.text.toString()
+            var solutionIdx: Int = solutionNumStr.toInt() - 1
             if (setSolutionOnBoard(solutionIdx)) {
-                mSolutionNumInput.setText((solutionIdx + 1).toString())
                 mBtnPrevSolution.isEnabled = true
-                if (solutionIdx == mSolver.numSolutions() - 1)
+                if (solutionIdx == viewModel.solver.numSolutions() - 1)
                     mBtnNextSolution.isEnabled = false
             }
             else
@@ -124,9 +122,10 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
                 if (s.length > 0) {
-                    val solutionIdx: Int = s.toString().toInt() - 1
+                    var solutionNumStr = s.toString()
+                    val solutionIdx: Int = solutionNumStr.toInt() - 1
                     if (!setSolutionOnBoard(solutionIdx)) {
-                        var errorMsg = "Invalid solution number: " + (solutionIdx + 1).toString()
+                        var errorMsg = "Invalid solution number: " + solutionNumStr
                         val toast = Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT)
                         toast.show()
                     }
@@ -222,7 +221,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBtnNextSolution: Button
     private lateinit var mSolutionNumInput: EditText
     private lateinit var mStatusText: TextView
-    private var mSolver: SudokuSolver = SudokuSolver()
 
     private val PUZZLE_FILE_CHOSEN_VAL: Int = 111
     private val DONE_SOLVING_MSG_VAL: Int = 112
@@ -238,19 +236,19 @@ class MainActivity : AppCompatActivity() {
             if (inputMessage.what == DONE_SOLVING_MSG_VAL) {
                 toggleUIInputsEnabled(true)
                 var statusText = "Done solving.  "
-                if (mSolver.numSolutions() == 0)
+                if (viewModel.solver.numSolutions() == 0)
                     statusText += "No solutions were found."
-                else if (mSolver.numSolutions() == 1)
+                else if (viewModel.solver.numSolutions() == 1)
                     statusText += "1 solution was found."
                 else
-                    statusText += "There are " + mSolver.numSolutions().toString() + " solutions."
+                    statusText += "There are " + viewModel.solver.numSolutions().toString() + " solutions."
                 setStatusText(statusText)
-                mSolutionNumInput.filters = arrayOf(InputFilterMinMax(1, mSolver.numSolutions()))
-                if (mSolver.numSolutions() > 0) {
+                mSolutionNumInput.filters = arrayOf(InputFilterMinMax(1, viewModel.solver.numSolutions()))
+                if (viewModel.solver.numSolutions() > 0) {
                     setSolutionOnBoard(0)
                     mSolutionNumInput.setText("1")
                     mBtnPrevSolution.isEnabled = false
-                    if (mSolver.numSolutions() == 1)
+                    if (viewModel.solver.numSolutions() == 1)
                         mBtnNextSolution.isEnabled = false
                 }
                 else {
@@ -264,9 +262,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSolutionOnBoard(pSolutionIdx: Int): Boolean {
         var retVal: Boolean = true
-        if ((pSolutionIdx >= 0) && (pSolutionIdx < mSolver.numSolutions())) {
+        if ((pSolutionIdx >= 0) && (pSolutionIdx < viewModel.solver.numSolutions())) {
             try {
-                val solution: SudokuSolution = mSolver.getSolution(pSolutionIdx)
+                val solution: SudokuSolution = viewModel.solver.getSolution(pSolutionIdx)
                 for (row in 1..9) {
                     for (col in 1..9)
                         setGridInputVal(row, col, solution.getVal(row - 1, col - 1))
@@ -276,8 +274,9 @@ class MainActivity : AppCompatActivity() {
                 retVal = false
             }
         }
-        else
+        else {
             retVal = false
+        }
 
         return retVal
     }
